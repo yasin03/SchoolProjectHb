@@ -6,15 +6,17 @@ import com.hb.domain.Adress;
 import com.hb.domain.Course;
 import com.hb.domain.Student;
 import com.hb.domain.Teacher;
+import com.hb.enums.BranchTypeEnum;
 import com.hb.enums.CityEnums;
+import com.hb.services.ITeacherService;
+import com.hb.services.TeacherServiceImpl;
 
 
 public class Client {
 
 	public static void main(String[] args) {
 
-		ICourseService courseService = new CourseServiceImpl();
-		IStudentService studentService = new StudentServiceImpl();
+	//	IStudentService studentService = new StudentServiceImpl();
 		ITeacherService teacherService = new TeacherServiceImpl();
 		
 		Adress adres1 = new Adress();
@@ -40,18 +42,18 @@ public class Client {
 		adres2.setTeacher(teacher2);
 		
 		teacher1.setName("Walter H.");
-		teacher1.setSurName("White");
-		teacher1.setAdress(adres1);
-		teacher1.getCourseList().add(course2);
-		teacher1.getCourseList().add(course1);
-		teacher1.setBranch(CourseEnums.ECONOMY);
+		teacher1.setSurname("White");
+		teacher1.setAdres(adres1);
+		teacher1.getCourse().add(course2);
+		teacher1.getCourse().add(course1);
+		teacher1.setBranch(BranchTypeEnum.FIZIK);
 		
 		teacher2.setName("Theodore");
-		teacher2.setSurName("Bagwell");
-		teacher2.setAdress(adres2);
-		teacher2.getCourseList().add(course2);
-		teacher2.getCourseList().add(course1);
-		teacher2.setBranch(CourseEnums.MATHEMATICS);
+		teacher2.setSurname("Bagwell");
+		teacher2.setAdres(adres2);
+		teacher2.getCourse().add(course2);
+		teacher2.getCourse().add(course1);
+		teacher2.setBranch(BranchTypeEnum.MATEMATIK);
 		
 		course1.setCourseName(CourseEnums.ALGEBRA);
 		course1.setLocation(LocationEnums.HOME);
@@ -90,8 +92,8 @@ public class Client {
 //		courseService.saveCourse(course2);
 //		courseService.saveCourse(course1);
 		
-		teacherService.saveTeacher(teacher2);
-		teacherService.saveTeacher(teacher1);
+		teacherService.createTeacher(teacher2);
+		teacherService.createTeacher(teacher1);
 		
 
 	}
