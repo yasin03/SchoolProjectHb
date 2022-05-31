@@ -3,43 +3,54 @@ package com.hb.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import com.hb.enums.BranchTypeEnum;
 
-import com.schoolProject.enums.CourseEnums;
 
 @Entity
 public class Teacher {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(length = 5,name = "Teacher_Id")
 	private int id;
-	
+
+	@Column(name = "Teacher_Name",length = 30,nullable = false)
 	private String name;
 	
-	private String surName;
-	 
-	@OneToMany(mappedBy="teacher")
-	private List<Course> courseList = new ArrayList<>();
-	
-	@OneToOne(mappedBy="teacher")
-	private Adress adress;
+	@Column(name = "Teacher_Surname",length = 30,nullable = false)
+	private String surname;
 	
 	@Enumerated(EnumType.STRING)
-	private CourseEnums branch;
+	private BranchTypeEnum branchType;
+	
+	@OneToMany(fetch = FetchType.LAZY,
+			cascade = CascadeType.ALL,
+			mappedBy = "teacher")
+	private List<Course> course = new ArrayList<>();
+	
+	@OneToOne(mappedBy = "teacher",
+			cascade = CascadeType.ALL,
+			fetch = FetchType.EAGER)
+	private Adress adres;
 
-	public CourseEnums getBranch() {
-		return branch;
+	public Teacher() {
 	}
-
-	public void setBranch(CourseEnums branch) {
-		this.branch = branch;
+	
+	public Teacher(String name, String surname, BranchTypeEnum branchType) {
+		this.name = name;
+		this.surname = surname;
+		this.branchType = branchType;
 	}
 
 	public int getId() {
@@ -58,37 +69,43 @@ public class Teacher {
 		this.name = name;
 	}
 
-	public String getSurName() {
-		return surName;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setSurName(String surName) {
-		this.surName = surName;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
-	public List<Course> getCourseList() {
-		return courseList;
+	public BranchTypeEnum getBranch() {
+		return branchType;
 	}
 
-	public void setCourseList(List<Course> courseList) {
-		this.courseList = courseList;
+	public void setBranch(BranchTypeEnum branchType) {
+		this.branchType = branchType;
 	}
 
-	public Adress getAdress() {
-		return adress;
+	public List<Course> getCourse() {
+		return course;
 	}
 
-	public void setAdress(Adress adress) {
-		this.adress = adress;
+	public void setCourse(List<Course> course) {
+		this.course = course;
+	}
+
+	public Adress getAdres() {
+		return adres;
+	}
+
+	public void setAdres(Adress adres) {
+		this.adres = adres;
 	}
 
 	@Override
 	public String toString() {
-		return "Teacher [id=" + id + ", name=" + name + ", surName=" + surName + ", courseList=" + courseList
-				+ ", adress=" + adress + ", branch=" + branch + "]";
+		return "Teacher [id=" + id + ", name=" + name + ", surname=" + surname + ", branchType=" + branchType +"]";
 	}
-
- 
+	
 	
 	
 }
