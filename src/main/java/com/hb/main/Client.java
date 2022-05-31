@@ -1,28 +1,18 @@
 package com.hb.main;
 
-import com.schoolProject.domain.Adress;
-import com.schoolProject.domain.Course;
-import com.schoolProject.domain.Student;
-import com.schoolProject.domain.Teacher;
-import com.schoolProject.enums.CityEnums;
-import com.schoolProject.enums.ClassNumberEnums;
-import com.schoolProject.enums.CourseEnums;
-import com.schoolProject.enums.LocationEnums;
-import com.schoolProject.service.AdressServiceImp;
-import com.schoolProject.service.CourseServiceImpl;
-import com.schoolProject.service.IAdressService;
-import com.schoolProject.service.ICourseService;
-import com.schoolProject.service.IStudentService;
-import com.schoolProject.service.ITeacherService;
-import com.schoolProject.service.StudentServiceImpl;
-import com.schoolProject.service.TeacherServiceImpl;
+
+
+import com.hb.domain.Adress;
+import com.hb.domain.Course;
+import com.hb.domain.Student;
+import com.hb.domain.Teacher;
+import com.hb.enums.CityEnums;
+
 
 public class Client {
 
 	public static void main(String[] args) {
 
-		
-		IAdressService adressService = new AdressServiceImp();
 		ICourseService courseService = new CourseServiceImpl();
 		IStudentService studentService = new StudentServiceImpl();
 		ITeacherService teacherService = new TeacherServiceImpl();
