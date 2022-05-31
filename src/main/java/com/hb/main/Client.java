@@ -8,7 +8,9 @@ import com.hb.domain.Student;
 import com.hb.domain.Teacher;
 import com.hb.enums.BranchTypeEnum;
 import com.hb.enums.CityEnums;
+import com.hb.services.IStudentService;
 import com.hb.services.ITeacherService;
+import com.hb.services.StudentServiceImpl;
 import com.hb.services.TeacherServiceImpl;
 
 
@@ -16,7 +18,7 @@ public class Client {
 
 	public static void main(String[] args) {
 
-	//	IStudentService studentService = new StudentServiceImpl();
+		IStudentService studentService = new StudentServiceImpl();
 		ITeacherService teacherService = new TeacherServiceImpl();
 		
 		Adress adres1 = new Adress();
