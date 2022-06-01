@@ -65,7 +65,6 @@ public class TeacherRepository {
 		tx.commit();
 		session.close();
 		
-		
 		return teacher;
 	}
 }

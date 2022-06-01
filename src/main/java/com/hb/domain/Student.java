@@ -32,6 +32,7 @@ public class Student {
 	@Column
 	private String surName;
 
+	
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private ClassEnum classNumber;
@@ -39,7 +40,8 @@ public class Student {
 	@Column
 	private int age;
 
-	@OneToOne(mappedBy = "student")
+	@OneToOne(mappedBy = "student",
+			cascade = CascadeType.ALL)
 	private Adress adress;
 
 	@ManyToMany(cascade = CascadeType.ALL)

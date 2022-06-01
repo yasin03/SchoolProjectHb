@@ -12,17 +12,21 @@ import com.hb.enums.ClassEnum;
 
 import com.hb.enums.CourseEnums;
 import com.hb.enums.LocationEnums;
-
+import com.hb.services.AdressServiceImpl;
+import com.hb.services.IAdressService;
 import com.hb.services.IStudentService;
 import com.hb.services.ITeacherService;
 import com.hb.services.StudentServiceImpl;
 import com.hb.services.TeacherServiceImpl;
+import com.hb.utils.HibernateUtil;
 
 
 public class Client {
 
 	public static void main(String[] args) {
+		
 
+		IAdressService adressService = new AdressServiceImpl();
 		IStudentService studentService = new StudentServiceImpl();
 		ITeacherService teacherService = new TeacherServiceImpl();
 		
@@ -44,8 +48,8 @@ public class Client {
 
 		adres1.setCity(CityEnums.IZMIR);
 
-		adres1.setStudent(student1);
-		adres1.setTeacher(teacher1);
+	//	adres1.setStudent(student1);
+	//	adres1.setTeacher(teacher1);
 		
 		adres2.setAdress("Red Boluevard");
 
@@ -53,8 +57,8 @@ public class Client {
 
 		adres2.setCity(CityEnums.ISTANBUL);
 
-		adres2.setStudent(student2);
-		adres2.setTeacher(teacher2);
+		//adres2.setStudent(student2);
+		//adres2.setTeacher(teacher2);
 		
 		teacher1.setName("Walter H.");
 		teacher1.setSurname("White");
@@ -71,36 +75,33 @@ public class Client {
 		teacher2.setBranch(BranchTypeEnum.MATEMATIK);
 		
 
-//		course1.setCourseName(BranchTypeEnum.KIMYA);
-//		course1.setLocation(LocationEnums.HOME);
-//		course1.setTeacher(teacher2);
-//		course1.getStudentList().add(student2);
-//		course1.getStudentList().add(student1);
-//		
-//		course2.setCourseName(CourseEnums.BIOLOGY);
-//		course2.setLocation(LocationEnums.PREPSCHOOL);
-//		course2.setTeacher(teacher1);
-//		course2.getStudentList().add(student2);
-//		course2.getStudentList().add(student1);
-//		
-//		student1.setName("Boris");
-//		student1.setSurName("Yeltsin");
-//		student1.setClassNumber(ClassEnum.A);
-//		student1.setAge(55);
-//		student1.setAdress(adres1);
-//		student1.getCourseList().add(course2);
-//		student1.getCourseList().add(course1);
-//		
-//		student2.setName("Cahar");
-//		student2.setSurName("Dudayev");
-//		student2.setClassNumber(ClassEnum.B);
-//		student2.setAge(45);
-//		student2.setAdress(adres2);
-//		student2.getCourseList().add(course2);
-//		student2.getCourseList().add(course1);
-//		
-//		studentService.saveStudent(student2);
-//		studentService.saveStudent(student1);
+		course1.setCourseName("Matematik");
+		course1.setLocation(LocationEnums.HOME);
+		course1.setTeacher(teacher2);
+		course1.getStudentList().add(student2);
+		course1.getStudentList().add(student1);
+		
+		course2.setCourseName("fizik");
+		course2.setLocation(LocationEnums.PREPSCHOOL);
+		course2.setTeacher(teacher1);
+		course2.getStudentList().add(student2);
+		course2.getStudentList().add(student1);
+		
+		student1.setName("Boris");
+		student1.setSurName("Yeltsin");
+		student1.setClassNumber(ClassEnum.A);
+		student1.setAge(55);
+		student1.setAdress(adres1);
+		student1.getCourseList().add(course2);
+		student1.getCourseList().add(course1);
+		
+		student2.setName("Cahar");
+		student2.setSurName("Dudayev");
+		student2.setClassNumber(ClassEnum.B);
+		student2.setAge(45);
+		student2.setAdress(adres2);
+		student2.getCourseList().add(course2);
+		student2.getCourseList().add(course1);
 
 		course1.setCourseName("PHYSICS");
 		course1.setLocation(LocationEnums.HOME);
@@ -130,8 +131,8 @@ public class Client {
 		student2.getCourseList().add(course2);
 		student2.getCourseList().add(course1);
 		
-		studentService.createStudent(student2);
-		studentService.createStudent(student1);
+//		studentService.createStudent(student2);
+//		studentService.createStudent(student1);
 
 		
 //		adressService.saveAdress(adres2);
@@ -140,9 +141,21 @@ public class Client {
 //		courseService.saveCourse(course2);
 //		courseService.saveCourse(course1);
 		
-		teacherService.createTeacher(teacher2);
-		teacherService.createTeacher(teacher1);
+	//	teacherService.createTeacher(teacher2);
+	//	teacherService.createTeacher(teacher1);
 		
+		
+		//teacherService.UpdateTeacher(1, "Ahmet");
+		//adressService.updateAdress(1, "Papatya Mah.");
+		System.out.println(teacherService.findByIdTeacher(2));
+		
+		Teacher t1 = teacherService.findByIdTeacher(2);
+		
+		teacherService.removeTeacher(t1);
+	
+
+		
+		HibernateUtil.getSessionFactory().close();
 
 	}
 

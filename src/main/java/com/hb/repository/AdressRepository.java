@@ -51,7 +51,6 @@ public class AdressRepository {
 		tx.commit();
 		session.close();
 		
-		
 		return adress;
 	}
 

@@ -5,7 +5,7 @@ import com.hb.repository.TeacherRepository;
 
 public class TeacherServiceImpl implements ITeacherService {
 	
-	private final static TeacherRepository repo = new TeacherRepository();
+	private static final TeacherRepository repo = new TeacherRepository();
 
 	@Override
 	public void createTeacher(Teacher teacher) {

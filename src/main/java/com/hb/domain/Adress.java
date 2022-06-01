@@ -1,5 +1,6 @@
 package com.hb.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -25,11 +26,11 @@ public class Adress {
 	@Enumerated(EnumType.STRING)
 	private CityEnums city;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="student_id")
 	private Student student;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="teacher_id")
 	private Teacher teacher;
 
