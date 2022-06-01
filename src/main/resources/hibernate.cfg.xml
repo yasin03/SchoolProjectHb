@@ -3,28 +3,31 @@
 		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
+
     <session-factory>
     
-        <property name ="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name = "hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/test_db</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">sifreniz</property>       
-        <property name ="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="connection.password">sifreniz</property>
+        <property name = "hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
         
-        
-        
+        <!-- validate, update, create, create-drop -->
+        <!-- create: uygulama her çalıştığında tablolar yeniden oluşur -->
+        <!-- create-drop: uygulama run edildiğinde tablolar oluşur, uygulama kapatıldığında tablolar silinir -->
+       	<!-- validate: veritabanında bir değişiklik yapmaz şemanın validate mi diye kontrol eder -->
+       	<!-- update: sınıflarda yapılan değişikliğe tabloları update eder -->
         <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         
+       
+        <mapping class="com.hbschool.domain.Teacher"/>
+         <mapping class="com.hbschool.domain.Student"/>
+         <mapping class="com.hbschool.domain.Adress"/>
+         <mapping class="com.hbschool.domain.Course"/>
         
-        
-        <mapping class="com.schoolProject.domain.Student" />   
-        <mapping class="com.schoolProject.domain.Teacher"/>     
-        <mapping class="com.schoolProject.domain.Course"/>     
-        <mapping class="com.schoolProject.domain.Adress"/>     
-        
-         
         
     </session-factory>
+    
 </hibernate-configuration>
