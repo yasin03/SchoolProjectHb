@@ -9,6 +9,11 @@ import com.hb.domain.Teacher;
 import com.hb.enums.BranchTypeEnum;
 import com.hb.enums.CityEnums;
 import com.hb.enums.ClassEnum;
+<<<<<<< HEAD
+=======
+import com.hb.enums.CourseEnums;
+import com.hb.enums.LocationEnums;
+>>>>>>> master
 import com.hb.services.IStudentService;
 import com.hb.services.ITeacherService;
 import com.hb.services.StudentServiceImpl;
@@ -35,12 +40,20 @@ public class Client {
 		Student student2 = new Student();
 		
 		adres1.setAdress("Yorkshire Berkeley");
+<<<<<<< HEAD
 		adres1.setCity(CityEnums.ADANA);
+=======
+		adres1.setCity(CityEnums.IZMIR);
+>>>>>>> master
 		adres1.setStudent(student1);
 		adres1.setTeacher(teacher1);
 		
 		adres2.setAdress("Red Boluevard");
+<<<<<<< HEAD
 		adres2.setCity(CityEnums.IZMIR);
+=======
+		adres2.setCity(CityEnums.ISTANBUL);
+>>>>>>> master
 		adres2.setStudent(student2);
 		adres2.setTeacher(teacher2);
 		
@@ -58,6 +71,7 @@ public class Client {
 		teacher2.getCourse().add(course1);
 		teacher2.setBranch(BranchTypeEnum.MATEMATIK);
 		
+<<<<<<< HEAD
 //		course1.setCourseName(BranchTypeEnum.KIMYA);
 //		course1.setLocation(LocationEnums.HOME);
 //		course1.setTeacher(teacher2);
@@ -88,6 +102,38 @@ public class Client {
 //		
 //		studentService.saveStudent(student2);
 //		studentService.saveStudent(student1);
+=======
+		course1.setCourseName("PHYSICS");
+		course1.setLocation(LocationEnums.HOME);
+		course1.setTeacher(teacher2);
+		course1.getStudentList().add(student2);
+		course1.getStudentList().add(student1);
+		
+		course2.setCourseName("BIOLOGY");
+		course2.setLocation(LocationEnums.PREPSCHOOL);
+		course2.setTeacher(teacher1);
+		course2.getStudentList().add(student2);
+		course2.getStudentList().add(student1);
+		
+		student1.setName("Boris");
+		student1.setSurName("Yeltsin");
+		student1.setClassNumber(ClassEnum.A);
+		student1.setAge(55);
+		student1.setAdress(adres1);
+		student1.getCourseList().add(course2);
+		student1.getCourseList().add(course1);
+		
+		student2.setName("Cahar");
+		student2.setSurName("Dudayev");
+		student2.setClassNumber(ClassEnum.B);
+		student2.setAge(45);
+		student2.setAdress(adres2);
+		student2.getCourseList().add(course2);
+		student2.getCourseList().add(course1);
+		
+		studentService.createStudent(student2);
+		studentService.createStudent(student1);
+>>>>>>> master
 		
 //		adressService.saveAdress(adres2);
 //		adressService.saveAdress(adres1);
