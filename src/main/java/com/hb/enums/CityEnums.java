@@ -2,13 +2,13 @@ package com.hb.enums;
 
 public enum CityEnums {
 	
-	ÝSTANBUL,
+	ISTANBUL,
 	ANKARA,
-	ÝZMÝR,
-	BURSA,
+	IZMIR,
 	ADANA,
-	ERZURUM,
-	AÐRI,
-	ESKÝÞEHÝR
+	MERSIN,
+	SAMSUN,
+	CANAKKALE,
+	MANISA
 
 }
