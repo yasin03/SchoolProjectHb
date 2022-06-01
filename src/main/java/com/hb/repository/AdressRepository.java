@@ -4,20 +4,19 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.hb.domain.Teacher;
+import com.hb.domain.Adress;
 import com.hb.utils.HibernateUtil;
 
-
-public class TeacherRepository {
-
+public class AdressRepository {
 	
-	public void createTeacher(Teacher teacher) {
+
+	public void saveAdress(Adress adress) {
 		
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
 
-		session.save(teacher);
+		session.save(adress);
 
 		tx.commit();
 		session.close();
@@ -25,47 +24,35 @@ public class TeacherRepository {
 	}
 
 	
-	public void removeTeacher(Teacher teacher) {
-		
+	public Adress findById(int id) {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
 
-		session.remove(teacher);
+		Adress adress = session.get(Adress.class,id);
 
 		tx.commit();
 		session.close();
 		
-	}
-
-	
-	public Teacher findByIdTeacher(int id) {
-		SessionFactory factory = HibernateUtil.getSessionFactory();
-		Session session = factory.openSession();
-		Transaction tx = session.beginTransaction();
-
-		Teacher teacher = session.get(Teacher.class,id);
-
-		tx.commit();
-		session.close();
-		
-		return teacher;
+			return adress;
 	}
 	
 
-	public Teacher UpdateTeacher(int id, String name ) {
+	public Adress UpdateAdress(int id, String adres ) {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
+		
+		Adress adress = session.get(Adress.class,id);
+		
+		adress.setAdress(adres);
 
-		Teacher teacher = session.get(Teacher.class,id);
-
-		teacher.setName(name);
 		
 		tx.commit();
 		session.close();
 		
 		
-		return teacher;
+		return adress;
 	}
+
 }
