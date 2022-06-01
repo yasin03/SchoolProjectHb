@@ -8,6 +8,9 @@ import com.hb.domain.Student;
 import com.hb.domain.Teacher;
 import com.hb.enums.BranchTypeEnum;
 import com.hb.enums.CityEnums;
+import com.hb.enums.ClassEnum;
+import com.hb.enums.CourseEnums;
+import com.hb.enums.LocationEnums;
 import com.hb.services.IStudentService;
 import com.hb.services.ITeacherService;
 import com.hb.services.StudentServiceImpl;
@@ -34,12 +37,12 @@ public class Client {
 		Student student2 = new Student();
 		
 		adres1.setAdress("Yorkshire Berkeley");
-		adres1.setCity(CityEnums.CALIFORNIA);
+		adres1.setCity(CityEnums.IZMIR);
 		adres1.setStudent(student1);
 		adres1.setTeacher(teacher1);
 		
 		adres2.setAdress("Red Boluevard");
-		adres2.setCity(CityEnums.PRAGUE);
+		adres2.setCity(CityEnums.ISTANBUL);
 		adres2.setStudent(student2);
 		adres2.setTeacher(teacher2);
 		
@@ -57,13 +60,13 @@ public class Client {
 		teacher2.getCourse().add(course1);
 		teacher2.setBranch(BranchTypeEnum.MATEMATIK);
 		
-		course1.setCourseName(CourseEnums.ALGEBRA);
+		course1.setCourseName("PHYSICS");
 		course1.setLocation(LocationEnums.HOME);
 		course1.setTeacher(teacher2);
 		course1.getStudentList().add(student2);
 		course1.getStudentList().add(student1);
 		
-		course2.setCourseName(CourseEnums.BIOLOGY);
+		course2.setCourseName("BIOLOGY");
 		course2.setLocation(LocationEnums.PREPSCHOOL);
 		course2.setTeacher(teacher1);
 		course2.getStudentList().add(student2);
@@ -71,7 +74,7 @@ public class Client {
 		
 		student1.setName("Boris");
 		student1.setSurName("Yeltsin");
-		student1.setClassNumber(ClassNumberEnums.A);
+		student1.setClassNumber(ClassEnum.A);
 		student1.setAge(55);
 		student1.setAdress(adres1);
 		student1.getCourseList().add(course2);
@@ -79,14 +82,14 @@ public class Client {
 		
 		student2.setName("Cahar");
 		student2.setSurName("Dudayev");
-		student2.setClassNumber(ClassNumberEnums.B);
+		student2.setClassNumber(ClassEnum.B);
 		student2.setAge(45);
 		student2.setAdress(adres2);
 		student2.getCourseList().add(course2);
 		student2.getCourseList().add(course1);
 		
-		studentService.saveStudent(student2);
-		studentService.saveStudent(student1);
+		studentService.createStudent(student2);
+		studentService.createStudent(student1);
 		
 //		adressService.saveAdress(adres2);
 //		adressService.saveAdress(adres1);
